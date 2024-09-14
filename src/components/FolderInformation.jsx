@@ -1,7 +1,7 @@
 export default function FolderInformation({}) {
   return (
     <>
-      <div id="folderInformation" className=" px-5 flex flex-col gap-2">
+      <div id="folderInformation" className=" flex flex-col gap-2">
         <p className="p-2 bg-slate-900 text-white max-w-min text-nowrap">
           Folder Information
         </p>

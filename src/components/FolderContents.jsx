@@ -8,24 +8,24 @@ import {
 
 export default function FolderContents() {
   return (
-    <div>
+    <div id="folderContents" className="w-full m">
       <h3 className="text-2xl">Folder Contents</h3>
-      <table>
+      <table className="bg-red-400 w-full">
         <thead>
           <tr>
-            <th className="w-[20px] bg-slate-600 px-3 py-1">
+            <th className="w-[10%] bg-slate-600 px-3">
               <button>
                 <FontAwesomeIcon icon={faArrowUp} />
               </button>
             </th>
-            <th className="flex w-[200px] gap-1 ms-3">
+            <th className="flex gap-1 justify-center items-center bg-blue-400 py-2">
               <p>Name</p>
               <FontAwesomeIcon icon={faArrowDownAZ} />
               <FontAwesomeIcon icon={faArrowDown19} />
               <FontAwesomeIcon icon={faArrowDownWideShort} />
             </th>
-            <th className="w-[100px]">Status</th>
-            <th className="w-[100px]">Action</th>
+            <th className="w-[20%] text-center bg-orange-400">Status</th>
+            <th className="w-[20%] text-center">Action</th>
           </tr>
         </thead>
       </table>

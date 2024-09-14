@@ -1,15 +1,17 @@
-import Folder from "../components/Folder";
-import FolderInformation from "../components/FolderInformation";
-import Breadcrumb from "../components/Breadcrumb";
+import Folder from "../../components/Folder";
+import FolderInformation from "../../components/FolderInformation";
+import Breadcrumb from "../../components/Breadcrumb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 import { useLoaderData } from "react-router-dom";
+import FolderContents from "../../components/FolderContents";
+import axios from "axios";
+
 export default function Main() {
   const folders = useLoaderData();
   return (
     <>
       <div className="m-4">
-        <Breadcrumb />
         <div className="flex w-full">
           <aside
             id="foldersContainer"
@@ -19,11 +21,14 @@ export default function Main() {
             <hr className="border-1 border-slate-300 w-full my-2" />
             <div className="flex flex-col bg-slate-300 w-full p-2 gap-2">
               {folders.length > 0 &&
-                folders.map((folder) => <Folder name={folder.name} />)}
+                folders.map((folder) => (
+                  <Folder key={folder._id} name={folder.name} />
+                ))}
             </div>
           </aside>
-          <div className="flex flex-col w-2/3">
+          <div className="flex flex-col w-2/3 gap-4 px-5">
             <FolderInformation />
+            <FolderContents />
           </div>
         </div>
       </div>
