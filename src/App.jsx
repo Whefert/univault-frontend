@@ -1,20 +1,27 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import Login from "./pages/Login";
-import Main from "./pages/Main";
+import MainContent from "./pages/MainContent";
 import "./App.css";
 import Layout from "./pages/Layout";
+import Main, { getAllFolders } from "./pages/Main";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Main />} />
-          <Route path="login" element={<Login />} />
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        <Route path="folder" element={<MainContent />}>
+          <Route indexpath="main" element={<Main />} loader={getAllFolders} />
         </Route>
-      </Routes>
-    </BrowserRouter>
+        <Route path="login" element={<Login />} />
+      </Route>
+    )
   );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

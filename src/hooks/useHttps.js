@@ -1,14 +1,28 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function useHttps(url, method = "GET", body) {
   const [data, setData] = useState();
+  const [error, setError] = useState();
+  const [isFetching, setIsFetching] = useState(false);
 
+  function sendGetRequest() {}
+
+  useEffect(() => {
+    setIsFetching(true);
     if (method === "GET") {
-     await axios.get(url)
-  }
+      try {
+        axios.get(url).then((res) => setData(res.data));
+      } catch (error) {
+        setError(error);
+      }
+    }
+    setIsFetching(false);
+  }, [url, method, body]);
   return {
     data: data,
+    error: error,
+    isFetching: isFetching,
   };
 }
 

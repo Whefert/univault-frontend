@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-export default function Folder({ folderName }) {
+export default function Folder({ name }) {
   const [open, setIsOpen] = useState(false);
 
   function onButtonClick() {
@@ -24,7 +24,7 @@ export default function Folder({ folderName }) {
           onClick={onButtonClick}
         />
         <FontAwesomeIcon icon={faFolder} />
-        <p>{folderName}</p>
+        <p>{name}</p>
       </div>
     </>
   );
